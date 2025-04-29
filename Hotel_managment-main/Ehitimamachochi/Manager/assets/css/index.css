@@ -1,0 +1,42 @@
+
+        html,
+        body {
+            height: 100%;
+            flex-direction: column;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .content {
+            flex: 1;
+        }
+
+        footer {
+            margin-top: auto;
+        }
+
+        .navbar-nav .nav-link::after {
+            content: '';
+            display: block;
+            height: 2px;
+            background-color: white;
+            width: 0;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            transition: width 0.3s;
+        }
+
+        .navbar-nav .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .navbar {
+            height: 100px;
+            margin-top: 1rem;
+        }
+
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }

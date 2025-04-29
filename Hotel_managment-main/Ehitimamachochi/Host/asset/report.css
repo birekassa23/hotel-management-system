@@ -1,0 +1,58 @@
+
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            display: flex;
+            flex-direction: column; 
+            min-height: 100vh;
+            margin: 0;
+            
+        }
+
+        .navbar {
+            margin-bottom: 0;
+            background-color: #343a40;
+            height: 100px;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-item {
+            margin: 10px;
+        }
+
+        .nav-item:hover {
+            font-size: 17px;
+            border-bottom: 1px blue solid;
+            background-color: #333;
+        }
+
+        .navbar-nav .nav-link {
+            color: #ffffff !important;
+        }
+
+        .nav-link:hover {
+            font-size: 18px;
+        }
+
+        .navbar-nav .nav-link.active {
+            color: #ff5722 !important;
+        }
+
+        .navbar-nav {
+            justify-content: center;
+            /* Center-align the nav items */
+            width: 100%;
+            /* Ensure the ul takes full width to center items properly */
+            gap: 10px;
+        }
+
+        
+
+        footer {
+            background-color: #343a40;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            width: 100%;
+            position: relative;
+        }

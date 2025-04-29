@@ -1,0 +1,31 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+}
+
+/* Styles for the toggler */
+.navbar-toggler {
+    border-color: rgba(14, 13, 13, 0.5); /* Lighter border for the toggle button */
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255,255,255,.5)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"); /* Custom icon color */
+}
+
+/* Adjust for mobile screens */
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: center; /* Center align the items on small screens */
+        width: 100%; /* Ensure the nav items take full width */
+        margin-top: 30px;
+    }
+
+    .nav-link {
+        padding: 1rem 0; /* Add vertical padding for larger touch area */
+    }
+
+    /* Make sure the links are easy to read */
+    .navbar {
+        padding: 1rem; /* Reduce padding on smaller screens for better layout */
+    }
+}

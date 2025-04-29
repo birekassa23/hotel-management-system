@@ -1,0 +1,46 @@
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .navbar-nav {
+            display: flex;
+        }
+
+        .modal-content {
+            width: 100%;
+            margin: auto;
+        }
+
+        .modal-body {
+            padding: 0;
+            margin: 0;
+            height: calc(100% - 60px);
+            overflow-y: auto;
+        }
+
+        .section {
+            display: none;
+            /* Start with sections hidden */
+        }
+
+        .modal-header .btn-close {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+        }
+
+        .table {
+            width: 90%;
+            align-items: center;
+            margin-left: 5%;
+            ;
+        }
+
+        .nav-link:hover {
+            font-size: 18px;
+            border-bottom: 1px solid blue;
+        }
