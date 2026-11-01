@@ -237,7 +237,7 @@ export default function StoreDashboard({ activeTab = 'inventory' }) {
             />
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
+          <div className="form-row-grid">
             <div className="form-group">
               <label className="form-label">Category</label>
               <select
@@ -264,7 +264,7 @@ export default function StoreDashboard({ activeTab = 'inventory' }) {
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
+          <div className="form-row-grid">
             <div className="form-group">
               <label className="form-label">Initial Quantity</label>
               <input

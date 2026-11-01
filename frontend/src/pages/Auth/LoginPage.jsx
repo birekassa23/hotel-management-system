@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
-import { Crown, KeyRound, User, Lock, Mail, Phone, ArrowLeft, ShieldCheck } from 'lucide-react';
+import ThemeToggle from '../../components/ThemeToggle';
+import { Crown, ArrowLeft, ShieldCheck } from 'lucide-react';
 
 const DEMO_ACCOUNTS = [
   { role: 'Manager', user: 'manager', desc: 'Hotel General Manager' },
@@ -55,47 +56,52 @@ export default function LoginPage({ onNavigate, onSuccess }) {
   return (
     <div style={{
       minHeight: '100vh',
+      minHeight: '100dvh',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      padding: '40px 20px',
-      background: 'radial-gradient(circle at 50% 20%, rgba(212, 175, 55, 0.08) 0%, #090d16 75%)'
+      padding: '24px 16px',
+      background: 'radial-gradient(circle at 50% 20%, rgba(212, 175, 55, 0.08) 0%, var(--bg-dark) 75%)'
     }}>
-      <div style={{ width: '100%', maxWidth: '940px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))', gap: '30px' }}>
+      <div style={{ width: '100%', maxWidth: '940px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: '24px' }}>
         {/* Left: Login / Register Form */}
-        <div className="glass-card" style={{ padding: '36px' }}>
-          <button
-            onClick={() => onNavigate('home')}
-            style={{ display: 'flex', alignItems: 'center', gap: '6px', background: 'transparent', color: 'var(--text-muted)', fontSize: '0.825rem', marginBottom: '24px' }}
-          >
-            <ArrowLeft size={16} /> Back to Hotel Website
-          </button>
+        <div className="glass-card" style={{ padding: 'clamp(20px, 4vw, 36px)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px' }}>
+            <button
+              onClick={() => onNavigate('home')}
+              style={{ display: 'flex', alignItems: 'center', gap: '6px', background: 'transparent', color: 'var(--text-muted)', fontSize: '0.825rem' }}
+            >
+              <ArrowLeft size={16} /> Back to Website
+            </button>
+            <ThemeToggle compact={true} />
+          </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
             <div style={{
-              width: '44px',
-              height: '44px',
+              width: '42px',
+              height: '42px',
               borderRadius: '10px',
               background: 'var(--gold-gradient)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              boxShadow: 'var(--gold-glow)'
+              boxShadow: 'var(--gold-glow)',
+              flexShrink: 0
             }}>
-              <Crown size={24} color="#090d16" />
+              <Crown size={22} color="#090d16" />
             </div>
             <div>
-              <h2 style={{ fontSize: '1.4rem', fontWeight: '800' }}>
-                {isRegister ? 'Create Guest Account' : 'Hotel Staff & Guest Portal'}
+              <h2 style={{ fontSize: '1.3rem', fontWeight: '800' }}>
+                {isRegister ? 'Create Guest Account' : 'Staff & Guest Portal'}
               </h2>
-              <div style={{ fontSize: '0.775rem', color: 'var(--gold-primary)', fontWeight: '600' }}>
+              <div style={{ fontSize: '0.75rem', color: 'var(--gold-primary)', fontWeight: '600' }}>
                 Role-Based Access Control System
               </div>
             </div>
           </div>
 
           {error && (
-            <div style={{ padding: '12px', background: 'rgba(244, 63, 94, 0.15)', border: '1px solid rgba(244, 63, 94, 0.3)', borderRadius: '6px', color: '#fb7185', fontSize: '0.85rem', marginBottom: '20px' }}>
+            <div style={{ padding: '12px', background: 'rgba(244, 63, 94, 0.15)', border: '1px solid rgba(244, 63, 94, 0.3)', borderRadius: '6px', color: 'var(--rose-text)', fontSize: '0.85rem', marginBottom: '20px' }}>
               {error}
             </div>
           )}
@@ -104,8 +110,11 @@ export default function LoginPage({ onNavigate, onSuccess }) {
             {isRegister && (
               <>
                 <div className="form-group">
-                  <label className="form-label">Full Name</label>
+                  <label htmlFor="register_full_name" className="form-label">Full Name</label>
                   <input
+                    id="register_full_name"
+                    name="full_name"
+                    autoComplete="name"
                     type="text"
                     required
                     placeholder="e.g. Almaz Bekele"
@@ -115,8 +124,11 @@ export default function LoginPage({ onNavigate, onSuccess }) {
                   />
                 </div>
                 <div className="form-group">
-                  <label className="form-label">Email Address</label>
+                  <label htmlFor="register_email" className="form-label">Email Address</label>
                   <input
+                    id="register_email"
+                    name="email"
+                    autoComplete="email"
                     type="email"
                     placeholder="guest@example.com"
                     className="form-control"
@@ -125,8 +137,11 @@ export default function LoginPage({ onNavigate, onSuccess }) {
                   />
                 </div>
                 <div className="form-group">
-                  <label className="form-label">Phone Number</label>
+                  <label htmlFor="register_phone" className="form-label">Phone Number</label>
                   <input
+                    id="register_phone"
+                    name="phone"
+                    autoComplete="tel"
                     type="tel"
                     placeholder="+251 9..."
                     className="form-control"
@@ -138,11 +153,14 @@ export default function LoginPage({ onNavigate, onSuccess }) {
             )}
 
             <div className="form-group">
-              <label className="form-label">Username</label>
+              <label htmlFor="login_username" className="form-label">Username</label>
               <input
+                id="login_username"
+                name="username"
+                autoComplete="username"
                 type="text"
                 required
-                placeholder="Enter username"
+                placeholder="Enter your username"
                 className="form-control"
                 value={form.username}
                 onChange={(e) => setForm({ ...form, username: e.target.value })}
@@ -150,8 +168,11 @@ export default function LoginPage({ onNavigate, onSuccess }) {
             </div>
 
             <div className="form-group">
-              <label className="form-label">Password</label>
+              <label htmlFor="login_password" className="form-label">Password</label>
               <input
+                id="login_password"
+                name="password"
+                autoComplete="current-password"
                 type="password"
                 required
                 placeholder="Enter password"
@@ -161,24 +182,28 @@ export default function LoginPage({ onNavigate, onSuccess }) {
               />
             </div>
 
-            <button type="submit" className="btn btn-gold" style={{ width: '100%', marginTop: '8px' }} disabled={loading}>
-              <KeyRound size={16} />
-              {loading ? 'Authenticating...' : (isRegister ? 'Register Account' : 'Sign In')}
+            <button
+              type="submit"
+              disabled={loading}
+              className="btn btn-gold"
+              style={{ width: '100%', padding: '12px', marginTop: '10px' }}
+            >
+              {loading ? 'Authenticating...' : isRegister ? 'Create Profile' : 'Sign In to Workspace'}
             </button>
           </form>
 
-          <div style={{ marginTop: '24px', textAlign: 'center', borderTop: '1px solid var(--border-light)', paddingTop: '16px', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+          <div style={{ marginTop: '20px', textAlign: 'center', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
             {isRegister ? (
               <span>
                 Already registered?{' '}
-                <button onClick={() => setIsRegister(false)} style={{ background: 'transparent', color: 'var(--gold-light)', fontWeight: '700' }}>
-                  Sign In Here
+                <button onClick={() => setIsRegister(false)} style={{ background: 'transparent', color: 'var(--gold-primary)', fontWeight: '700' }}>
+                  Sign In
                 </button>
               </span>
             ) : (
               <span>
                 New guest?{' '}
-                <button onClick={() => setIsRegister(true)} style={{ background: 'transparent', color: 'var(--gold-light)', fontWeight: '700' }}>
+                <button onClick={() => setIsRegister(true)} style={{ background: 'transparent', color: 'var(--gold-primary)', fontWeight: '700' }}>
                   Register Online Profile
                 </button>
               </span>
@@ -187,15 +212,15 @@ export default function LoginPage({ onNavigate, onSuccess }) {
         </div>
 
         {/* Right: Instant One-Click Role Switcher */}
-        <div className="glass-card" style={{ padding: '36px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+        <div className="glass-card" style={{ padding: 'clamp(20px, 4vw, 36px)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--gold-primary)', fontWeight: '700', fontSize: '0.85rem', textTransform: 'uppercase', marginBottom: '8px' }}>
               <ShieldCheck size={18} /> Instant Evaluation
             </div>
-            <h3 style={{ fontSize: '1.35rem', fontWeight: '800', marginBottom: '10px' }}>
+            <h3 style={{ fontSize: '1.25rem', fontWeight: '800', marginBottom: '8px' }}>
               One-Click Persona Login
             </h3>
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', marginBottom: '20px' }}>
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.825rem', marginBottom: '16px' }}>
               Select any role below to instantly enter that workspace without typing credentials:
             </p>
 
@@ -210,7 +235,7 @@ export default function LoginPage({ onNavigate, onSuccess }) {
                     justifyContent: 'space-between',
                     padding: '10px 14px',
                     borderRadius: '8px',
-                    background: 'rgba(255, 255, 255, 0.03)',
+                    background: 'var(--chip-bg)',
                     border: '1px solid var(--border-light)',
                     color: 'var(--text-main)',
                     fontSize: '0.85rem',
@@ -220,15 +245,15 @@ export default function LoginPage({ onNavigate, onSuccess }) {
                   }}
                   onMouseOver={(e) => {
                     e.currentTarget.style.borderColor = 'var(--gold-primary)';
-                    e.currentTarget.style.background = 'rgba(212, 175, 55, 0.08)';
+                    e.currentTarget.style.background = 'rgba(212, 175, 55, 0.1)';
                   }}
                   onMouseOut={(e) => {
                     e.currentTarget.style.borderColor = 'var(--border-light)';
-                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.03)';
+                    e.currentTarget.style.background = 'var(--chip-bg)';
                   }}
                 >
                   <div>
-                    <div style={{ fontWeight: '700', color: 'var(--gold-light)' }}>{acc.role}</div>
+                    <div style={{ fontWeight: '700', color: 'var(--gold-primary)' }}>{acc.role}</div>
                     <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>{acc.desc}</div>
                   </div>
                   <span className="badge badge-gold" style={{ fontSize: '0.725rem' }}>
@@ -239,7 +264,7 @@ export default function LoginPage({ onNavigate, onSuccess }) {
             </div>
           </div>
 
-          <div style={{ marginTop: '20px', padding: '12px', background: 'rgba(255, 255, 255, 0.02)', borderRadius: '6px', fontSize: '0.75rem', color: 'var(--text-dim)' }}>
+          <div style={{ marginTop: '16px', padding: '10px 12px', background: 'var(--chip-bg)', borderRadius: '6px', fontSize: '0.75rem', color: 'var(--text-dim)' }}>
             💡 Default password for all seeded accounts is <strong style={{ color: 'var(--text-muted)' }}>password123</strong>.
           </div>
         </div>

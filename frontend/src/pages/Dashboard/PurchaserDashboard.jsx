@@ -137,7 +137,7 @@ export default function PurchaserDashboard({ activeTab = 'purchases' }) {
             />
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
+          <div className="form-row-grid">
             <div className="form-group">
               <label className="form-label">Category</label>
               <select
@@ -164,7 +164,7 @@ export default function PurchaserDashboard({ activeTab = 'purchases' }) {
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
+          <div className="form-row-grid">
             <div className="form-group">
               <label className="form-label">Quantity</label>
               <input

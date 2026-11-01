@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAuth } from '../context/AuthContext';
-import { ShieldCheck, UserCheck, ArrowRight, Home } from 'lucide-react';
+import ThemeToggle from './ThemeToggle';
+import { ShieldCheck, Home } from 'lucide-react';
 
 const ROLES = [
   { id: 'Manager', label: '👑 Manager' },
@@ -19,26 +20,45 @@ export default function RoleBanner({ onGoHome }) {
 
   return (
     <div className="demo-role-bar">
-      <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-        <ShieldCheck size={18} color="var(--gold-primary)" />
-        <span style={{ fontWeight: '600', color: 'var(--text-muted)' }}>
-          Active Persona:
-        </span>
-        <span className="badge badge-gold" style={{ fontSize: '0.825rem' }}>
-          {user ? user.role : 'Guest'}
-        </span>
-        {user && (
-          <span style={{ color: 'var(--text-dim)', fontSize: '0.8rem' }}>
-            ({user.full_name})
+      {/* Top / Left: Active Persona & Actions */}
+      <div className="demo-role-bar-top" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '10px', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <ShieldCheck size={17} color="var(--gold-primary)" />
+          <span style={{ fontWeight: '600', color: 'var(--text-muted)', fontSize: '0.825rem' }}>
+            Active:
           </span>
-        )}
+          <span className="badge badge-gold" style={{ fontSize: '0.8rem', padding: '3px 8px' }}>
+            {user ? user.role : 'Guest'}
+          </span>
+          {user && (
+            <span style={{ color: 'var(--text-dim)', fontSize: '0.775rem', display: 'inline-block', maxWidth: '140px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              ({user.full_name})
+            </span>
+          )}
+        </div>
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <ThemeToggle compact={true} />
+
+          {onGoHome && (
+            <button
+              onClick={onGoHome}
+              className="btn btn-outline btn-sm"
+              style={{ padding: '4px 10px', fontSize: '0.75rem', height: '28px' }}
+              title="Return to Public Website"
+            >
+              <Home size={13} /> <span className="hide-on-very-small">Public Website</span>
+            </button>
+          )}
+        </div>
       </div>
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-        <span style={{ fontSize: '0.75rem', color: 'var(--text-dim)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-          Fast Role Switch:
+      {/* Role Chips Carousel */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', width: '100%', overflow: 'hidden' }}>
+        <span style={{ fontSize: '0.725rem', color: 'var(--text-dim)', textTransform: 'uppercase', letterSpacing: '0.05em', flexShrink: 0 }}>
+          Switch:
         </span>
-        <div className="role-chips">
+        <div className="role-chips" style={{ flex: 1 }}>
           {ROLES.map((r) => {
             const isActive = user?.role === r.id;
             return (
@@ -53,17 +73,15 @@ export default function RoleBanner({ onGoHome }) {
             );
           })}
         </div>
-
-        {onGoHome && (
-          <button
-            onClick={onGoHome}
-            className="btn btn-outline btn-sm"
-            style={{ marginLeft: '8px', padding: '4px 10px', fontSize: '0.775rem' }}
-          >
-            <Home size={14} /> Public Website
-          </button>
-        )}
       </div>
+
+      <style>{`
+        @media (max-width: 480px) {
+          .hide-on-very-small {
+            display: none;
+          }
+        }
+      `}</style>
     </div>
   );
 }

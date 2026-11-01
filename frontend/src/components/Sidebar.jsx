@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAuth } from '../context/AuthContext';
+import ThemeToggle from './ThemeToggle';
 import {
   LayoutDashboard,
   Users,
@@ -16,7 +17,8 @@ import {
   Settings,
   LogOut,
   Home,
-  UserCheck
+  UserCheck,
+  X
 } from 'lucide-react';
 
 const ROLE_NAV_CONFIG = {
@@ -75,81 +77,113 @@ const ROLE_NAV_CONFIG = {
   ]
 };
 
-export default function Sidebar({ activeTab, onSelectTab, onGoHome }) {
+export default function Sidebar({ activeTab, onSelectTab, onGoHome, isOpen = false, onClose }) {
   const { user, logout } = useAuth();
   const role = user?.role || 'Customer';
   const navItems = ROLE_NAV_CONFIG[role] || ROLE_NAV_CONFIG['Customer'];
 
+  const handleItemClick = (id) => {
+    onSelectTab(id);
+    if (onClose) onClose();
+  };
+
   return (
-    <aside style={{
-      width: '260px',
-      background: 'var(--bg-sidebar)',
-      borderRight: '1px solid var(--border-light)',
-      display: 'flex',
-      flexDirection: 'column',
-      height: '100%',
-      flexShrink: 0
-    }}>
+    <aside
+      className={`sidebar-drawer ${isOpen ? 'open' : ''}`}
+      style={{
+        width: '260px',
+        background: 'var(--bg-sidebar)',
+        borderRight: '1px solid var(--border-light)',
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100%',
+        flexShrink: 0,
+        zIndex: 100,
+        transition: 'background-color 0.25s ease'
+      }}
+    >
       {/* Brand Header */}
       <div style={{
-        padding: '24px 20px',
+        padding: '20px 18px',
         borderBottom: '1px solid var(--border-light)',
         display: 'flex',
         alignItems: 'center',
-        gap: '12px'
+        justifyContent: 'space-between'
       }}>
-        <div style={{
-          width: '38px',
-          height: '38px',
-          borderRadius: '8px',
-          background: 'var(--gold-gradient)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          boxShadow: 'var(--gold-glow)'
-        }}>
-          <span style={{ fontWeight: '800', color: '#090d16', fontSize: '1.1rem' }}>H</span>
-        </div>
-        <div>
-          <div style={{ fontWeight: '700', fontSize: '0.95rem', color: 'var(--text-main)' }}>
-            Grand Horizon
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <div style={{
+            width: '36px',
+            height: '36px',
+            borderRadius: '8px',
+            background: 'var(--gold-gradient)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            boxShadow: 'var(--gold-glow)'
+          }}>
+            <span style={{ fontWeight: '800', color: '#090d16', fontSize: '1.05rem' }}>H</span>
           </div>
-          <div style={{ fontSize: '0.725rem', color: 'var(--gold-primary)', fontWeight: '600', textTransform: 'uppercase' }}>
-            {role} Workspace
+          <div>
+            <div style={{ fontWeight: '700', fontSize: '0.95rem', color: 'var(--text-main)' }}>
+              Grand Horizon
+            </div>
+            <div style={{ fontSize: '0.7rem', color: 'var(--gold-primary)', fontWeight: '600', textTransform: 'uppercase' }}>
+              {role} Workspace
+            </div>
           </div>
         </div>
+
+        {/* Close Button on Mobile Drawer */}
+        {onClose && (
+          <button
+            onClick={onClose}
+            className="mobile-sidebar-close"
+            style={{
+              background: 'var(--chip-bg)',
+              color: 'var(--text-muted)',
+              padding: '6px',
+              borderRadius: '6px',
+              display: 'none',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
+            aria-label="Close menu"
+          >
+            <X size={18} />
+          </button>
+        )}
       </div>
 
       {/* User Info Card */}
-      <div style={{ padding: '16px 20px', background: 'rgba(255, 255, 255, 0.02)', borderBottom: '1px solid var(--border-light)' }}>
-        <div style={{ fontSize: '0.875rem', fontWeight: '600', color: 'var(--text-main)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+      <div style={{ padding: '14px 18px', background: 'var(--chip-bg)', borderBottom: '1px solid var(--border-light)' }}>
+        <div style={{ fontSize: '0.85rem', fontWeight: '600', color: 'var(--text-main)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
           {user?.full_name || 'Guest User'}
         </div>
-        <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
+        <div style={{ fontSize: '0.725rem', color: 'var(--text-muted)' }}>
           {user?.position || user?.role || 'Guest'}
         </div>
       </div>
 
       {/* Navigation Links */}
-      <nav style={{ padding: '16px 12px', flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+      <nav style={{ padding: '14px 10px', flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '4px' }}>
         {navItems.map((item) => {
           const Icon = item.icon;
           const isActive = activeTab === item.id;
           return (
             <button
               key={item.id}
-              onClick={() => onSelectTab(item.id)}
+              onClick={() => handleItemClick(item.id)}
               style={{
                 display: 'flex',
                 alignItems: 'center',
                 gap: '12px',
                 width: '100%',
-                padding: '11px 14px',
+                padding: '10px 14px',
                 borderRadius: '8px',
-                fontSize: '0.875rem',
+                fontSize: '0.85rem',
                 fontWeight: isActive ? '700' : '500',
                 background: isActive ? 'rgba(212, 175, 55, 0.15)' : 'transparent',
-                color: isActive ? 'var(--gold-light)' : 'var(--text-muted)',
+                color: isActive ? 'var(--gold-primary)' : 'var(--text-muted)',
                 border: isActive ? '1px solid var(--border-gold)' : '1px solid transparent',
                 textAlign: 'left',
                 transition: 'all 0.2s ease',
@@ -157,7 +191,7 @@ export default function Sidebar({ activeTab, onSelectTab, onGoHome }) {
               }}
               onMouseOver={(e) => {
                 if (!isActive) {
-                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.04)';
+                  e.currentTarget.style.background = 'var(--chip-bg)';
                   e.currentTarget.style.color = 'var(--text-main)';
                 }
               }}
@@ -168,15 +202,20 @@ export default function Sidebar({ activeTab, onSelectTab, onGoHome }) {
                 }
               }}
             >
-              <Icon size={18} color={isActive ? 'var(--gold-primary)' : 'inherit'} />
+              <Icon size={17} color={isActive ? 'var(--gold-primary)' : 'inherit'} />
               <span>{item.label}</span>
             </button>
           );
         })}
       </nav>
 
-      {/* Footer Actions */}
-      <div style={{ padding: '16px 14px', borderTop: '1px solid var(--border-light)', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+      {/* Footer Actions & Theme Toggle */}
+      <div style={{ padding: '14px 12px', borderTop: '1px solid var(--border-light)', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 4px 6px' }}>
+          <span style={{ fontSize: '0.775rem', color: 'var(--text-dim)', fontWeight: '600' }}>Appearance</span>
+          <ThemeToggle compact={false} showLabel={true} />
+        </div>
+
         <button
           onClick={onGoHome}
           style={{
@@ -184,7 +223,7 @@ export default function Sidebar({ activeTab, onSelectTab, onGoHome }) {
             alignItems: 'center',
             gap: '10px',
             width: '100%',
-            padding: '9px 12px',
+            padding: '8px 12px',
             borderRadius: '6px',
             background: 'transparent',
             color: 'var(--text-muted)',
@@ -193,7 +232,7 @@ export default function Sidebar({ activeTab, onSelectTab, onGoHome }) {
           }}
           className="btn-outline"
         >
-          <Home size={16} /> Public Website
+          <Home size={15} /> Public Website
         </button>
 
         <button
@@ -203,17 +242,26 @@ export default function Sidebar({ activeTab, onSelectTab, onGoHome }) {
             alignItems: 'center',
             gap: '10px',
             width: '100%',
-            padding: '9px 12px',
+            padding: '8px 12px',
             borderRadius: '6px',
             background: 'rgba(244, 63, 94, 0.1)',
-            color: '#fb7185',
+            color: 'var(--rose-text)',
+            border: '1px solid rgba(244, 63, 94, 0.2)',
             fontSize: '0.825rem',
             fontWeight: '600'
           }}
         >
-          <LogOut size={16} /> Sign Out
+          <LogOut size={15} /> Sign Out
         </button>
       </div>
+
+      <style>{`
+        @media (max-width: 900px) {
+          .mobile-sidebar-close {
+            display: flex !important;
+          }
+        }
+      `}</style>
     </aside>
   );
 }

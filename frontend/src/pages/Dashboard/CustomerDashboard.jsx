@@ -102,7 +102,7 @@ export default function CustomerDashboard({ activeTab = 'bookings' }) {
 
       {/* Tab: In-Room Dining */}
       {activeTab === 'room_service' && (
-        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '24px' }}>
+        <div className="responsive-split-grid">
           <div>
             <h4 style={{ fontSize: '1.15rem', marginBottom: '16px' }}>In-Room Gourmet Dining Menu</h4>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '14px' }}>

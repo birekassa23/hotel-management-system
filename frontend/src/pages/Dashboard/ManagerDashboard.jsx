@@ -168,7 +168,7 @@ export default function ManagerDashboard({ activeTab = 'overview' }) {
 
       {/* Tab: Overview */}
       {(activeTab === 'overview' || !activeTab) && (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '24px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))', gap: '24px' }}>
           {/* Recent Financial Entries */}
           <div className="glass-card">
             <h3 style={{ fontSize: '1.15rem', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -460,8 +460,10 @@ export default function ManagerDashboard({ activeTab = 'overview' }) {
           <h3 style={{ fontSize: '1.25rem', marginBottom: '20px' }}>Hotel Settings & Configuration</h3>
           <form onSubmit={handleSaveHotelInfo}>
             <div className="form-group">
-              <label className="form-label">Hotel Name</label>
+              <label htmlFor="mgr_hotel_name" className="form-label">Hotel Name</label>
               <input
+                id="mgr_hotel_name"
+                name="hotel_name"
                 type="text"
                 className="form-control"
                 value={hotelInfo.name || ''}
@@ -470,10 +472,12 @@ export default function ManagerDashboard({ activeTab = 'overview' }) {
               />
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
+            <div className="form-row-grid">
               <div className="form-group">
-                <label className="form-label">Town</label>
+                <label htmlFor="mgr_hotel_town" className="form-label">Town</label>
                 <input
+                  id="mgr_hotel_town"
+                  name="hotel_town"
                   type="text"
                   className="form-control"
                   value={hotelInfo.town || ''}
@@ -481,8 +485,10 @@ export default function ManagerDashboard({ activeTab = 'overview' }) {
                 />
               </div>
               <div className="form-group">
-                <label className="form-label">Region & Country</label>
+                <label htmlFor="mgr_hotel_region" className="form-label">Region & Country</label>
                 <input
+                  id="mgr_hotel_region"
+                  name="hotel_region"
                   type="text"
                   className="form-control"
                   value={hotelInfo.region || ''}
@@ -491,10 +497,12 @@ export default function ManagerDashboard({ activeTab = 'overview' }) {
               </div>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
+            <div className="form-row-grid">
               <div className="form-group">
-                <label className="form-label">Phone</label>
+                <label htmlFor="mgr_hotel_phone" className="form-label">Phone</label>
                 <input
+                  id="mgr_hotel_phone"
+                  name="hotel_phone"
                   type="text"
                   className="form-control"
                   value={hotelInfo.phone || ''}
@@ -502,8 +510,10 @@ export default function ManagerDashboard({ activeTab = 'overview' }) {
                 />
               </div>
               <div className="form-group">
-                <label className="form-label">Email</label>
+                <label htmlFor="mgr_hotel_email" className="form-label">Email</label>
                 <input
+                  id="mgr_hotel_email"
+                  name="hotel_email"
                   type="email"
                   className="form-control"
                   value={hotelInfo.email || ''}
@@ -513,8 +523,10 @@ export default function ManagerDashboard({ activeTab = 'overview' }) {
             </div>
 
             <div className="form-group">
-              <label className="form-label">Address</label>
+              <label htmlFor="mgr_hotel_address" className="form-label">Address</label>
               <input
+                id="mgr_hotel_address"
+                name="hotel_address"
                 type="text"
                 className="form-control"
                 value={hotelInfo.address || ''}
@@ -532,10 +544,13 @@ export default function ManagerDashboard({ activeTab = 'overview' }) {
       {/* Add Employee Modal */}
       <Modal isOpen={isEmpModalOpen} onClose={() => setIsEmpModalOpen(false)} title="Add Hotel Staff">
         <form onSubmit={handleCreateEmployee}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
+          <div className="form-row-grid">
             <div className="form-group">
-              <label className="form-label">Username *</label>
+              <label htmlFor="mgr_emp_username" className="form-label">Username *</label>
               <input
+                id="mgr_emp_username"
+                name="emp_username"
+                autoComplete="username"
                 type="text"
                 required
                 className="form-control"
@@ -544,8 +559,10 @@ export default function ManagerDashboard({ activeTab = 'overview' }) {
               />
             </div>
             <div className="form-group">
-              <label className="form-label">Password *</label>
+              <label htmlFor="mgr_emp_password" className="form-label">Password *</label>
               <input
+                id="mgr_emp_password"
+                name="emp_password"
                 type="password"
                 required
                 className="form-control"
@@ -556,8 +573,11 @@ export default function ManagerDashboard({ activeTab = 'overview' }) {
           </div>
 
           <div className="form-group">
-            <label className="form-label">Full Name *</label>
+            <label htmlFor="mgr_emp_fullname" className="form-label">Full Name *</label>
             <input
+              id="mgr_emp_fullname"
+              name="emp_fullname"
+              autoComplete="name"
               type="text"
               required
               className="form-control"
@@ -566,10 +586,12 @@ export default function ManagerDashboard({ activeTab = 'overview' }) {
             />
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
+          <div className="form-row-grid">
             <div className="form-group">
-              <label className="form-label">Role *</label>
+              <label htmlFor="mgr_emp_role" className="form-label">Role *</label>
               <select
+                id="mgr_emp_role"
+                name="emp_role"
                 className="form-select"
                 value={empForm.role}
                 onChange={(e) => setEmpForm({ ...empForm, role: e.target.value })}
@@ -585,8 +607,10 @@ export default function ManagerDashboard({ activeTab = 'overview' }) {
               </select>
             </div>
             <div className="form-group">
-              <label className="form-label">Monthly Salary (ETB)</label>
+              <label htmlFor="mgr_emp_salary" className="form-label">Monthly Salary (ETB)</label>
               <input
+                id="mgr_emp_salary"
+                name="emp_salary"
                 type="number"
                 className="form-control"
                 value={empForm.salary}
@@ -595,10 +619,13 @@ export default function ManagerDashboard({ activeTab = 'overview' }) {
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
+          <div className="form-row-grid">
             <div className="form-group">
-              <label className="form-label">Phone</label>
+              <label htmlFor="mgr_emp_phone" className="form-label">Phone</label>
               <input
+                id="mgr_emp_phone"
+                name="emp_phone"
+                autoComplete="tel"
                 type="text"
                 className="form-control"
                 value={empForm.phone}
@@ -606,8 +633,11 @@ export default function ManagerDashboard({ activeTab = 'overview' }) {
               />
             </div>
             <div className="form-group">
-              <label className="form-label">Email</label>
+              <label htmlFor="mgr_emp_email" className="form-label">Email</label>
               <input
+                id="mgr_emp_email"
+                name="emp_email"
+                autoComplete="email"
                 type="email"
                 className="form-control"
                 value={empForm.email}
@@ -625,10 +655,12 @@ export default function ManagerDashboard({ activeTab = 'overview' }) {
       {/* Create Room Modal */}
       <Modal isOpen={isRoomModalOpen} onClose={() => setIsRoomModalOpen(false)} title="Create New Hotel Room">
         <form onSubmit={handleCreateRoom}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
+          <div className="form-row-grid">
             <div className="form-group">
-              <label className="form-label">Room Number *</label>
+              <label htmlFor="mgr_room_number" className="form-label">Room Number *</label>
               <input
+                id="mgr_room_number"
+                name="room_number"
                 type="text"
                 required
                 placeholder="e.g. 501"
@@ -638,8 +670,10 @@ export default function ManagerDashboard({ activeTab = 'overview' }) {
               />
             </div>
             <div className="form-group">
-              <label className="form-label">Room Type *</label>
+              <label htmlFor="mgr_room_type" className="form-label">Room Type *</label>
               <input
+                id="mgr_room_type"
+                name="room_type"
                 type="text"
                 required
                 placeholder="e.g. Deluxe Suite"
@@ -650,10 +684,12 @@ export default function ManagerDashboard({ activeTab = 'overview' }) {
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
+          <div className="form-row-grid">
             <div className="form-group">
-              <label className="form-label">Nightly Rate (ETB) *</label>
+              <label htmlFor="mgr_room_price" className="form-label">Nightly Rate (ETB) *</label>
               <input
+                id="mgr_room_price"
+                name="room_price"
                 type="number"
                 required
                 className="form-control"
@@ -662,8 +698,10 @@ export default function ManagerDashboard({ activeTab = 'overview' }) {
               />
             </div>
             <div className="form-group">
-              <label className="form-label">Floor</label>
+              <label htmlFor="mgr_room_floor" className="form-label">Floor</label>
               <input
+                id="mgr_room_floor"
+                name="room_floor"
                 type="number"
                 className="form-control"
                 value={roomForm.floor}
@@ -673,8 +711,10 @@ export default function ManagerDashboard({ activeTab = 'overview' }) {
           </div>
 
           <div className="form-group">
-            <label className="form-label">Amenities</label>
+            <label htmlFor="mgr_room_amenities" className="form-label">Amenities</label>
             <input
+              id="mgr_room_amenities"
+              name="room_amenities"
               type="text"
               placeholder="King Bed, Balcony, Mini Bar..."
               className="form-control"

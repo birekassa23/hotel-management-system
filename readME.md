@@ -1,7 +1,9 @@
 # 🏨 Grand Horizon Hotel Management System
-> Built with **React** (Vite + Modern Vanilla CSS Luxury Design System) & **Node.js / Express** with Native Persistent SQLite & RBAC
+> Built with **React** (Vite + Modern Vanilla CSS Luxury Design System with Dual Dark & Light Modes + Mobile Smartphone Responsiveness) & **Node.js / Express** with Native Persistent SQLite & RBAC
 
 Welcome to the **Enterprise Hotel Management System (EHMS)** — a modern, fully-featured, production-ready Full-Stack hospitality solution featuring:
+- **Dual Luxury Themes**: Instant toggle between Obsidian Dark Mode and Royal Alabaster Light Mode, with persistent storage in localStorage and system preference detection.
+- **Mobile Smartphone Responsiveness**: Mobile hamburger navigation drawers, off-canvas dashboard sidebars, touch-scrollable role carousels, and responsive split grids.
 - **Client Guest Portal**: Luxury landing page, online room & hall booking engine, booking status lookup, in-room dining, and guest reviews.
 - **Enterprise Staff Portal**: Full Role-Based Access Control (RBAC) with unified authentication and dedicated dashboards for all 9 hotel actors.
 - **One-Click Fast Persona Switcher**: Test and evaluate any role (Manager, Receptionist, Cashier, Host, Barman, Store, Purchaser, Staff, Customer) with a single click.

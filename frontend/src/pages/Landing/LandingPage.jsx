@@ -171,30 +171,31 @@ export default function LandingPage({ onNavigate }) {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '80px 24px',
+        padding: 'clamp(50px, 8vh, 80px) 16px 40px',
         textAlign: 'center',
-        background: `linear-gradient(180deg, rgba(9, 13, 22, 0.7) 0%, rgba(9, 13, 22, 0.95) 100%), url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat`
+        background: `linear-gradient(180deg, rgba(9, 13, 22, 0.75) 0%, var(--bg-dark) 100%), url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat`
       }}>
-        <div style={{ maxWidth: '900px', margin: '0 auto', zIndex: 2 }}>
+        <div style={{ maxWidth: '900px', margin: '0 auto', zIndex: 2, width: '100%' }}>
           <div style={{
             display: 'inline-flex',
             alignItems: 'center',
             gap: '8px',
-            padding: '6px 16px',
+            padding: '7px 18px',
             borderRadius: 'var(--radius-full)',
-            background: 'rgba(212, 175, 55, 0.15)',
-            border: '1px solid var(--border-gold)',
-            color: 'var(--gold-light)',
+            background: 'rgba(212, 175, 55, 0.22)',
+            border: '1px solid rgba(245, 158, 11, 0.45)',
+            color: '#fef08a',
             fontSize: '0.85rem',
             fontWeight: '600',
-            marginBottom: '24px'
+            marginBottom: '20px',
+            boxShadow: '0 2px 12px rgba(0, 0, 0, 0.3)'
           }}>
-            <Sparkles size={16} color="var(--gold-primary)" />
+            <Sparkles size={16} color="#fbbf24" />
             <span>Premier 5-Star Luxury Destination</span>
           </div>
 
           <h1 style={{
-            fontSize: 'clamp(2.5rem, 6vw, 4.2rem)',
+            fontSize: 'clamp(2.1rem, 6vw, 4.2rem)',
             fontWeight: '800',
             lineHeight: 1.15,
             marginBottom: '20px',
@@ -205,59 +206,70 @@ export default function LandingPage({ onNavigate }) {
           </h1>
 
           <p style={{
-            fontSize: 'clamp(1rem, 2vw, 1.25rem)',
-            color: 'var(--text-muted)',
+            fontSize: 'clamp(0.95rem, 2vw, 1.25rem)',
+            color: '#e2e8f0',
             maxWidth: '720px',
             margin: '0 auto 36px',
-            fontWeight: '400'
+            fontWeight: '400',
+            textShadow: '0 2px 10px rgba(0,0,0,0.7)'
           }}>
             Welcome to Grand Horizon Hotel & Suites — pairing luxury accommodation, state-of-the-art conference facilities, and gourmet international gastronomy.
           </p>
 
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '14px', flexWrap: 'wrap' }}>
             <button
               onClick={() => handleOpenRoomBooking(rooms[0] || { id: 1, type: 'Deluxe Suite', price: 1900 })}
               className="btn btn-gold"
-              style={{ padding: '14px 32px', fontSize: '1.05rem', borderRadius: '8px' }}
+              style={{ padding: '14px 28px', fontSize: '1rem', borderRadius: '8px', minWidth: 'min(100%, 250px)' }}
             >
-              <Calendar size={20} /> Reserve Your Sanctuary
+              <Calendar size={18} /> Reserve Your Sanctuary
             </button>
             <button
               onClick={() => onNavigate('dashboard')}
               className="btn btn-outline"
-              style={{ padding: '14px 28px', fontSize: '1.05rem', borderRadius: '8px' }}
+              style={{
+                padding: '14px 28px',
+                fontSize: '1rem',
+                borderRadius: '8px',
+                background: 'rgba(9, 13, 22, 0.75)',
+                color: '#ffffff',
+                borderColor: 'rgba(255, 255, 255, 0.25)',
+                minWidth: 'min(100%, 250px)'
+              }}
             >
-              <Shield size={18} color="var(--gold-primary)" /> Explore Management Suite
+              <Shield size={18} color="#fbbf24" /> Explore Management Suite
             </button>
           </div>
 
           {/* Quick Metrics */}
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
-            gap: '20px',
-            marginTop: '60px',
-            padding: '20px',
-            background: 'rgba(18, 26, 45, 0.65)',
-            backdropFilter: 'blur(12px)',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 140px), 1fr))',
+            gap: '16px',
+            marginTop: '50px',
+            padding: '20px 16px',
+            background: 'var(--bg-card)',
+            backdropFilter: 'blur(16px)',
+            WebkitBackdropFilter: 'blur(16px)',
             borderRadius: 'var(--radius-md)',
-            border: '1px solid var(--border-light)'
+            border: '1px solid var(--border-light)',
+            boxShadow: 'var(--shadow-md)'
           }}>
             <div>
               <div style={{ fontSize: '1.75rem', fontWeight: '800', color: 'var(--gold-primary)' }}>50+</div>
-              <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Luxury Rooms & Suites</div>
+              <div style={{ fontSize: '0.825rem', color: 'var(--text-muted)' }}>Luxury Rooms & Suites</div>
             </div>
             <div>
               <div style={{ fontSize: '1.75rem', fontWeight: '800', color: 'var(--emerald)' }}>4</div>
-              <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Grand Conference Halls</div>
+              <div style={{ fontSize: '0.825rem', color: 'var(--text-muted)' }}>Conference Halls</div>
             </div>
             <div>
-              <div style={{ fontSize: '1.75rem', fontWeight: '800', color: 'var(--gold-light)' }}>100%</div>
-              <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Authentic Ethiopian Dining</div>
+              <div style={{ fontSize: '1.75rem', fontWeight: '800', color: 'var(--gold-primary)' }}>100%</div>
+              <div style={{ fontSize: '0.825rem', color: 'var(--text-muted)' }}>Authentic Dining</div>
             </div>
             <div>
               <div style={{ fontSize: '1.75rem', fontWeight: '800', color: 'var(--sapphire)' }}>24 / 7</div>
-              <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Concierge & Room Service</div>
+              <div style={{ fontSize: '0.825rem', color: 'var(--text-muted)' }}>Concierge Service</div>
             </div>
           </div>
         </div>
@@ -277,8 +289,8 @@ export default function LandingPage({ onNavigate }) {
 
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))',
-          gap: '28px'
+          gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 290px), 1fr))',
+          gap: '24px'
         }}>
           {rooms.map((room) => (
             <div key={room.id} className="glass-card" style={{ padding: '0', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
@@ -336,7 +348,7 @@ export default function LandingPage({ onNavigate }) {
       </section>
 
       {/* Meeting Halls Section */}
-      <section id="halls" style={{ padding: '80px 24px', background: 'rgba(14, 20, 36, 0.5)', borderTop: '1px solid var(--border-light)', borderBottom: '1px solid var(--border-light)' }}>
+      <section id="halls" style={{ padding: '80px 24px', background: 'var(--chip-bg)', borderTop: '1px solid var(--border-light)', borderBottom: '1px solid var(--border-light)' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '48px' }}>
             <div style={{ color: 'var(--gold-primary)', fontWeight: '700', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.15em', marginBottom: '8px' }}>
@@ -350,8 +362,8 @@ export default function LandingPage({ onNavigate }) {
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))',
-            gap: '28px'
+            gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 290px), 1fr))',
+            gap: '24px'
           }}>
             {halls.map((hall) => (
               <div key={hall.id} className="glass-card" style={{ padding: '0', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
@@ -410,8 +422,8 @@ export default function LandingPage({ onNavigate }) {
 
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-          gap: '24px'
+          gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 250px), 1fr))',
+          gap: '20px'
         }}>
           {foods.slice(0, 4).map((food) => (
             <div key={food.id} className="glass-card" style={{ padding: '16px' }}>
@@ -431,14 +443,14 @@ export default function LandingPage({ onNavigate }) {
       </section>
 
       {/* Guest Reviews & Feedback Submission */}
-      <section style={{ padding: '80px 24px', background: 'rgba(14, 20, 36, 0.4)', borderTop: '1px solid var(--border-light)' }}>
+      <section style={{ padding: '80px 24px', background: 'var(--chip-bg)', borderTop: '1px solid var(--border-light)' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '40px' }}>
             <h2 style={{ fontSize: '2rem', fontWeight: '800' }}>Guest Testimonials & Reviews</h2>
             <p style={{ color: 'var(--text-muted)' }}>Read what dignitaries and travelers say about their experience with us.</p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px', marginBottom: '40px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '20px', marginBottom: '40px' }}>
             {feedbackList.slice(0, 3).map((f) => (
               <div key={f.id} className="glass-card">
                 <div style={{ display: 'flex', alignItems: 'center', gap: '4px', marginBottom: '10px' }}>
@@ -449,7 +461,7 @@ export default function LandingPage({ onNavigate }) {
                 <p style={{ fontSize: '0.9rem', color: 'var(--text-main)', fontStyle: 'italic', marginBottom: '16px' }}>
                   "{f.comment}"
                 </p>
-                <div style={{ fontWeight: '700', fontSize: '0.875rem', color: 'var(--gold-light)' }}>
+                <div style={{ fontWeight: '700', fontSize: '0.875rem', color: 'var(--gold-primary)' }}>
                   {f.guest_name}
                 </div>
                 <div style={{ fontSize: '0.75rem', color: 'var(--text-dim)' }}>
@@ -468,8 +480,11 @@ export default function LandingPage({ onNavigate }) {
               </div>
             )}
             <form onSubmit={handleReviewSubmit}>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px', marginBottom: '14px' }}>
+              <div className="form-row-grid" style={{ marginBottom: '14px' }}>
                 <input
+                  id="review_guest_name"
+                  name="guest_name"
+                  autoComplete="name"
                   type="text"
                   placeholder="Your Name"
                   className="form-control"
@@ -478,6 +493,9 @@ export default function LandingPage({ onNavigate }) {
                   required
                 />
                 <input
+                  id="review_guest_email"
+                  name="guest_email"
+                  autoComplete="email"
                   type="email"
                   placeholder="Your Email (Optional)"
                   className="form-control"
@@ -486,6 +504,8 @@ export default function LandingPage({ onNavigate }) {
                 />
               </div>
               <textarea
+                id="review_comment"
+                name="comment"
                 placeholder="Write your review here..."
                 rows="3"
                 className="form-control"
@@ -505,7 +525,7 @@ export default function LandingPage({ onNavigate }) {
       {/* Footer */}
       <footer style={{
         marginTop: 'auto',
-        background: '#070a12',
+        background: 'var(--bg-surface)',
         borderTop: '1px solid var(--border-light)',
         padding: '50px 24px 30px'
       }}>
@@ -583,10 +603,13 @@ export default function LandingPage({ onNavigate }) {
               </div>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
+            <div className="form-row-grid">
               <div className="form-group">
-                <label className="form-label">Full Name *</label>
+                <label htmlFor="booking_customer_name" className="form-label">Full Name *</label>
                 <input
+                  id="booking_customer_name"
+                  name="customer_name"
+                  autoComplete="name"
                   type="text"
                   required
                   placeholder="e.g. Almaz Bekele"
@@ -596,8 +619,11 @@ export default function LandingPage({ onNavigate }) {
                 />
               </div>
               <div className="form-group">
-                <label className="form-label">Phone Number *</label>
+                <label htmlFor="booking_customer_phone" className="form-label">Phone Number *</label>
                 <input
+                  id="booking_customer_phone"
+                  name="customer_phone"
+                  autoComplete="tel"
                   type="tel"
                   required
                   placeholder="+251 9..."
@@ -608,10 +634,13 @@ export default function LandingPage({ onNavigate }) {
               </div>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
+            <div className="form-row-grid">
               <div className="form-group">
-                <label className="form-label">Email Address</label>
+                <label htmlFor="booking_customer_email" className="form-label">Email Address</label>
                 <input
+                  id="booking_customer_email"
+                  name="customer_email"
+                  autoComplete="email"
                   type="email"
                   placeholder="guest@domain.com"
                   className="form-control"
@@ -620,8 +649,10 @@ export default function LandingPage({ onNavigate }) {
                 />
               </div>
               <div className="form-group">
-                <label className="form-label">Kebele / ID / Passport</label>
+                <label htmlFor="booking_kebele_id" className="form-label">Kebele / ID / Passport</label>
                 <input
+                  id="booking_kebele_id"
+                  name="kebele_id"
                   type="text"
                   placeholder="ID Number"
                   className="form-control"
@@ -631,10 +662,12 @@ export default function LandingPage({ onNavigate }) {
               </div>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
+            <div className="form-row-grid">
               <div className="form-group">
-                <label className="form-label">Check-in Date *</label>
+                <label htmlFor="booking_checkin_date" className="form-label">Check-in Date *</label>
                 <input
+                  id="booking_checkin_date"
+                  name="checkin_date"
                   type="date"
                   required
                   className="form-control"
@@ -643,8 +676,10 @@ export default function LandingPage({ onNavigate }) {
                 />
               </div>
               <div className="form-group">
-                <label className="form-label">Check-out Date *</label>
+                <label htmlFor="booking_checkout_date" className="form-label">Check-out Date *</label>
                 <input
+                  id="booking_checkout_date"
+                  name="checkout_date"
                   type="date"
                   required
                   className="form-control"
@@ -655,8 +690,10 @@ export default function LandingPage({ onNavigate }) {
             </div>
 
             <div className="form-group">
-              <label className="form-label">Special Requests / Notes</label>
+              <label htmlFor="booking_notes" className="form-label">Special Requests / Notes</label>
               <textarea
+                id="booking_notes"
+                name="notes"
                 rows="2"
                 placeholder="Airport pickup, dietary needs, or high-floor preference..."
                 className="form-control"
@@ -686,6 +723,8 @@ export default function LandingPage({ onNavigate }) {
         <form onSubmit={handleLookup} style={{ marginBottom: '20px' }}>
           <div style={{ display: 'flex', gap: '10px' }}>
             <input
+              id="lookup_query"
+              name="lookup_query"
               type="text"
               placeholder="Enter Booking Code (e.g. RES-1029) or Email"
               className="form-control"

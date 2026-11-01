@@ -128,8 +128,8 @@ export default function ReceptionistDashboard({ activeTab = 'rack' }) {
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
-            gap: '18px',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 180px), 1fr))',
+            gap: '16px',
             marginBottom: '32px'
           }}>
             {rooms.map((room) => {
@@ -181,6 +181,8 @@ export default function ReceptionistDashboard({ activeTab = 'rack' }) {
             <h3 style={{ fontSize: '1.2rem', fontWeight: '800' }}>Active Room Stays & Reservations</h3>
             <div style={{ position: 'relative', width: '280px' }}>
               <input
+                id="receptionist_search"
+                name="search"
                 type="text"
                 placeholder="Search booking code, name..."
                 className="form-control"
@@ -331,10 +333,13 @@ export default function ReceptionistDashboard({ activeTab = 'rack' }) {
         title={`Walk-in Registration — Room ${selectedRoom?.room_number} (${selectedRoom?.type})`}
       >
         <form onSubmit={handleWalkinSubmit}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
+          <div className="form-row-grid">
             <div className="form-group">
-              <label className="form-label">Guest Full Name *</label>
+              <label htmlFor="walkin_customer_name" className="form-label">Guest Full Name *</label>
               <input
+                id="walkin_customer_name"
+                name="customer_name"
+                autoComplete="name"
                 type="text"
                 required
                 className="form-control"
@@ -343,8 +348,11 @@ export default function ReceptionistDashboard({ activeTab = 'rack' }) {
               />
             </div>
             <div className="form-group">
-              <label className="form-label">Phone Number *</label>
+              <label htmlFor="walkin_customer_phone" className="form-label">Phone Number *</label>
               <input
+                id="walkin_customer_phone"
+                name="customer_phone"
+                autoComplete="tel"
                 type="tel"
                 required
                 className="form-control"
@@ -354,10 +362,12 @@ export default function ReceptionistDashboard({ activeTab = 'rack' }) {
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
+          <div className="form-row-grid">
             <div className="form-group">
-              <label className="form-label">Kebele / Passport ID *</label>
+              <label htmlFor="walkin_kebele_id" className="form-label">Kebele / Passport ID *</label>
               <input
+                id="walkin_kebele_id"
+                name="kebele_id"
                 type="text"
                 required
                 placeholder="KB-99120"
@@ -367,8 +377,11 @@ export default function ReceptionistDashboard({ activeTab = 'rack' }) {
               />
             </div>
             <div className="form-group">
-              <label className="form-label">Email (Optional)</label>
+              <label htmlFor="walkin_customer_email" className="form-label">Email (Optional)</label>
               <input
+                id="walkin_customer_email"
+                name="customer_email"
+                autoComplete="email"
                 type="email"
                 className="form-control"
                 value={walkinForm.customer_email}
@@ -377,10 +390,12 @@ export default function ReceptionistDashboard({ activeTab = 'rack' }) {
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
+          <div className="form-row-grid">
             <div className="form-group">
-              <label className="form-label">Check-in Date</label>
+              <label htmlFor="walkin_checkin_date" className="form-label">Check-in Date</label>
               <input
+                id="walkin_checkin_date"
+                name="checkin_date"
                 type="date"
                 required
                 className="form-control"
@@ -389,8 +404,10 @@ export default function ReceptionistDashboard({ activeTab = 'rack' }) {
               />
             </div>
             <div className="form-group">
-              <label className="form-label">Check-out Date</label>
+              <label htmlFor="walkin_checkout_date" className="form-label">Check-out Date</label>
               <input
+                id="walkin_checkout_date"
+                name="checkout_date"
                 type="date"
                 required
                 className="form-control"

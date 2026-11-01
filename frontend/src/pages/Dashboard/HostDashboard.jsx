@@ -93,7 +93,7 @@ export default function HostDashboard({ activeTab = 'pos' }) {
     <div>
       {/* POS Terminal */}
       {(activeTab === 'pos' || !activeTab) && (
-        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '24px' }}>
+        <div className="responsive-split-grid">
           {/* Menu Catalog */}
           <div>
             {/* Table Selection */}

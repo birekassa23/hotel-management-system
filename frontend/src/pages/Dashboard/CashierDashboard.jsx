@@ -254,7 +254,7 @@ export default function CashierDashboard({ activeTab = 'billing' }) {
       {/* Manual Entry Modal */}
       <Modal isOpen={isTxModalOpen} onClose={() => setIsTxModalOpen(false)} title="Record Ledger Transaction">
         <form onSubmit={handleCreateTx}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
+          <div className="form-row-grid">
             <div className="form-group">
               <label className="form-label">Transaction Type</label>
               <select
