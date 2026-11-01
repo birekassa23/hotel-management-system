@@ -1,7 +1,7 @@
-# 🏨 Ehitmamachochi Grand Luxury Hotel Management System
-> Built with **React** (Vite + Modern Vanilla CSS Design System) & **Node.js / Express** with Native Persistent SQLite & RBAC
+# 🏨 Grand Horizon Hotel Management System
+> Built with **React** (Vite + Modern Vanilla CSS Luxury Design System) & **Node.js / Express** with Native Persistent SQLite & RBAC
 
-Welcome to the modernized **Ehitmamachochi Hotel Management System (EHMS 2.0)**. The legacy PHP codebase has been completely upgraded into a modern, production-ready Full-Stack application featuring:
+Welcome to the **Enterprise Hotel Management System (EHMS)** — a modern, fully-featured, production-ready Full-Stack hospitality solution featuring:
 - **Client Guest Portal**: Luxury landing page, online room & hall booking engine, booking status lookup, in-room dining, and guest reviews.
 - **Enterprise Staff Portal**: Full Role-Based Access Control (RBAC) with unified authentication and dedicated dashboards for all 9 hotel actors.
 - **One-Click Fast Persona Switcher**: Test and evaluate any role (Manager, Receptionist, Cashier, Host, Barman, Store, Purchaser, Staff, Customer) with a single click.
@@ -34,7 +34,7 @@ npm run dev
 | 🛎️ **Receptionist** | `receptionist` | Interactive visual Room Rack (Free/Occupied/Reserved/Maintenance), walk-in guest check-in, check-out, room & hall reservation management, guest directory. |
 | 💰 **Cashier** | `cashier` | Central cash desk, settling guest room invoices, payroll disbursement to staff, manual deposit/withdrawal logging, daily cash balance. |
 | 🍽️ **Host** | `host` | Touchscreen dining POS terminal for tablets/phones, table selection, food & beverage ordering with real-time stock deduction, active table orders stream. |
-| 🍸 **Barman** | `barman` | Beverage inventory monitoring (beer, wine, spirits), drink order stream from hosts, stock restock requisitions, beverage sales tracking. |
+| 🍸 **Barman** | `barman` | Beverage inventory monitoring (craft beers, wines, spirits), drink order stream from hosts, stock restock requisitions, beverage sales tracking. |
 | 📦 **Store** | `store` | Central warehouse inventory catalog, low-stock warnings, department dispatch requisitions to Bar, Kitchen, and Housekeeping. |
 | 🛒 **Purchaser** | `purchaser` | Procurement orders, vendor management, supply chain tracking, auto-restocking warehouse upon delivery receipt. |
 | 🧹 **Staff** | `staff` | Housekeeping room turnovers, sanitization checklist, maintenance incident reporting, daily shift attendance log. |

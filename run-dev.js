@@ -2,7 +2,7 @@ const { spawn } = require('child_process');
 const path = require('path');
 
 console.log('\x1b[36m%s\x1b[0m', '═════════════════════════════════════════════════════════════');
-console.log('\x1b[33m%s\x1b[0m', '   EHITMAMACHOCHI HOTEL MANAGEMENT SYSTEM (REACT + EXPRESS)   ');
+console.log('\x1b[33m%s\x1b[0m', '      ENTERPRISE HOTEL MANAGEMENT SYSTEM (REACT + EXPRESS)    ');
 console.log('\x1b[36m%s\x1b[0m', '═════════════════════════════════════════════════════════════');
 
 const backend = spawn('node', ['server.js'], {

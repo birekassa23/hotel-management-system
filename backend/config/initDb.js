@@ -189,7 +189,7 @@ function initDatabase() {
 
     CREATE TABLE IF NOT EXISTS financial_transactions (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
-      type TEXT NOT NULL, -- 'income' or 'expense'
+      type TEXT NOT NULL,
       category TEXT NOT NULL,
       amount REAL NOT NULL,
       reference_id TEXT,
@@ -241,14 +241,14 @@ function initDatabase() {
       `INSERT INTO hotel_info (name, address, town, region, country, phone, email, description)
        VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
       [
-        'Ehitmamachochi Grand Luxury Hotel',
-        'Ayermeda above post Kembridge Academy',
-        'Teppi',
-        'South West',
-        'Ethiopia',
-        '+251 904 9314',
-        'contact@ehitmamachochihotel.com',
-        'Welcome to Ehitmamachochi Hotel - a sanctuary of luxury, authentic Ethiopian hospitality, premier conference facilities, and world-class dining.'
+        'Grand Horizon Luxury Hotel & Suites',
+        '742 Evergreen Boulevard, Central District',
+        'Metropolis',
+        'Capital Region',
+        'Global',
+        '+1 (555) 019-2834',
+        'contact@grandhorizonhotel.com',
+        'Welcome to Grand Horizon Hotel & Suites — a sanctuary of modern luxury, world-class hospitality, state-of-the-art conference facilities, and fine dining.'
       ]
     );
   }
@@ -260,15 +260,15 @@ function initDatabase() {
     const hash = bcrypt.hashSync('password123', salt);
 
     const defaultUsers = [
-      ['manager', hash, 'Dawit Alemu (General Manager)', 'manager@ehitmamachochi.com', '+251 911 234567', 'Manager', 'General Manager', 'Male', 38, 45000, 'yes'],
-      ['receptionist', hash, 'Bethlehem Tadesse (Head Receptionist)', 'reception@ehitmamachochi.com', '+251 912 345678', 'Receptionist', 'Front Desk Lead', 'Female', 27, 18000, 'yes'],
-      ['cashier', hash, 'Yared Bekele (Senior Cashier)', 'cashier@ehitmamachochi.com', '+251 913 456789', 'Cashier', 'Chief Cashier', 'Male', 32, 22000, 'yes'],
-      ['host', hash, 'Hiwot Haile (Dining Host & Server)', 'host@ehitmamachochi.com', '+251 914 567890', 'Host', 'Lead Host / Waiter', 'Female', 24, 14000, 'yes'],
-      ['barman', hash, 'Solomon Kebede (Master Barman)', 'barman@ehitmamachochi.com', '+251 915 678901', 'Barman', 'Head Mixologist', 'Male', 29, 16000, 'yes'],
-      ['store', hash, 'Mesfin Negash (Store Keeper)', 'store@ehitmamachochi.com', '+251 916 789012', 'Store', 'Warehouse Custodian', 'Male', 35, 17500, 'yes'],
-      ['purchaser', hash, 'Tigist Worku (Procurement Officer)', 'purchaser@ehitmamachochi.com', '+251 917 890123', 'Purchaser', 'Supply Chain Purchaser', 'Female', 31, 20000, 'yes'],
-      ['staff', hash, 'Abebe Desta (Housekeeping & Maintenance)', 'staff@ehitmamachochi.com', '+251 918 901234', 'Staff', 'Maintenance & Housekeeper', 'Male', 26, 12000, 'yes'],
-      ['guest', hash, 'Helen Tesfaye (Valued Guest)', 'guest@client.com', '+251 920 112233', 'Customer', 'Guest', 'Female', 29, 0, 'yes']
+      ['manager', hash, 'Alexander Wright (General Manager)', 'manager@hotel.com', '+1 (555) 234-5678', 'Manager', 'General Manager', 'Male', 38, 6500, 'yes'],
+      ['receptionist', hash, 'Sophia Bennett (Head Receptionist)', 'reception@hotel.com', '+1 (555) 345-6789', 'Receptionist', 'Front Desk Lead', 'Female', 28, 3800, 'yes'],
+      ['cashier', hash, 'David Miller (Chief Cashier)', 'cashier@hotel.com', '+1 (555) 456-7890', 'Cashier', 'Finance Lead', 'Male', 33, 4200, 'yes'],
+      ['host', hash, 'Emma Davis (Dining Host)', 'host@hotel.com', '+1 (555) 567-8901', 'Host', 'Lead Host / Server', 'Female', 25, 2900, 'yes'],
+      ['barman', hash, 'Marcus Vance (Master Mixologist)', 'barman@hotel.com', '+1 (555) 678-9012', 'Barman', 'Head Barman', 'Male', 30, 3200, 'yes'],
+      ['store', hash, 'Robert Hayes (Warehouse Keeper)', 'store@hotel.com', '+1 (555) 789-0123', 'Store', 'Warehouse Custodian', 'Male', 36, 3400, 'yes'],
+      ['purchaser', hash, 'Jennifer Cole (Procurement Officer)', 'purchaser@hotel.com', '+1 (555) 890-1234', 'Purchaser', 'Supply Chain Purchaser', 'Female', 32, 4000, 'yes'],
+      ['staff', hash, 'Michael Turner (Housekeeping & Maintenance)', 'staff@hotel.com', '+1 (555) 901-2345', 'Staff', 'Maintenance & Housekeeper', 'Male', 27, 2600, 'yes'],
+      ['guest', hash, 'Sarah Jenkins (Valued Guest)', 'guest@client.com', '+1 (555) 112-2334', 'Customer', 'Guest', 'Female', 29, 0, 'yes']
     ];
 
     for (const u of defaultUsers) {
@@ -284,14 +284,14 @@ function initDatabase() {
   const roomCount = db.get('SELECT COUNT(*) as count FROM rooms').count;
   if (roomCount === 0) {
     const initialRooms = [
-      ['101', 'Single Deluxe', 1200, 'free', 1, 1, 'King Bed, High-speed Wi-Fi, Smart TV, Hot Shower, City View', 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=800&q=80', 'Cozy single room tailored for business solo travelers.'],
-      ['102', 'Single Deluxe', 1200, 'occupied', 1, 1, 'King Bed, High-speed Wi-Fi, Smart TV, Hot Shower, Garden View', 'https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=800&q=80', 'Quiet single room facing the tranquil interior courtyard.'],
-      ['201', 'Double Executive', 1900, 'free', 2, 2, '2 Queen Beds, Balcony, Workspace Desk, Mini Bar, Air Conditioning', 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80', 'Spacious double room equipped with top-tier comfort and scenic balcony.'],
-      ['202', 'Double Executive', 1900, 'reserved', 2, 2, '2 Queen Beds, Luxury Bathrobe, Smart Lighting, Espresso Bar', 'https://images.unsplash.com/photo-1591088398332-8a7791972843?auto=format&fit=crop&w=800&q=80', 'Elegant double room tailored for couples and executive partners.'],
-      ['301', 'Deluxe Premium', 2600, 'free', 3, 3, 'Master King Bed, Living Lounge, Jacuzzi Tub, Panoramic Mountain View', 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80', 'Deluxe premium accommodation boasting expansive floor space.'],
-      ['302', 'Deluxe Premium', 2600, 'free', 3, 3, 'King Bed, Plush Sofa Lounge, Rain Shower, Breakfast Buffet Included', 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=800&q=80', 'Unmatched comfort paired with complimentary bespoke services.'],
-      ['401', 'Presidential VIP Suite', 4800, 'free', 4, 4, 'Dual Master Bedrooms, Private Kitchenette, Dining Area, Butler Service, 4K Cinema TV', 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=800&q=80', 'The pinnacle of luxury in South West Ethiopia, fit for heads of state and dignitaries.'],
-      ['402', 'Royal Penthouse Suite', 5500, 'free', 4, 4, 'Penthouse Terrace, Private Bar, Heated Whirlpool, 360 Degree Views', 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=800&q=80', 'Top-floor royal suite with exclusive private access and rooftop lounge.']
+      ['101', 'Single Deluxe', 150, 'free', 1, 1, 'King Bed, High-speed Wi-Fi, Smart TV, Hot Rain Shower, City View', 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=800&q=80', 'Cozy single room tailored for business travelers and solo explorers.'],
+      ['102', 'Single Deluxe', 150, 'occupied', 1, 1, 'King Bed, High-speed Wi-Fi, Smart TV, Hot Rain Shower, Garden View', 'https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=800&q=80', 'Peaceful single room facing the tranquil interior garden courtyard.'],
+      ['201', 'Double Executive', 240, 'free', 2, 2, '2 Queen Beds, Private Balcony, Ergonomic Workspace, Mini Bar, Climate Control', 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80', 'Spacious executive double room equipped with top-tier comfort and scenic balcony.'],
+      ['202', 'Double Executive', 240, 'reserved', 2, 2, '2 Queen Beds, Plush Bathrobes, Smart Lighting, Espresso Bar', 'https://images.unsplash.com/photo-1591088398332-8a7791972843?auto=format&fit=crop&w=800&q=80', 'Elegant double room tailored for couples and executive partners.'],
+      ['301', 'Deluxe Premium', 350, 'free', 3, 3, 'Master King Bed, Living Lounge, Jacuzzi Tub, Panoramic Skyline View', 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80', 'Deluxe premium accommodation boasting expansive floor space and bespoke furnishings.'],
+      ['302', 'Deluxe Premium', 350, 'free', 3, 3, 'King Bed, Plush Sofa Lounge, Rain Shower, Breakfast Buffet Included', 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=800&q=80', 'Unmatched comfort paired with complimentary personalized concierge services.'],
+      ['401', 'Presidential VIP Suite', 650, 'free', 4, 4, 'Dual Master Bedrooms, Private Kitchenette, Dining Area, Butler Service, 4K Cinema TV', 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=800&q=80', 'The pinnacle of luxury living, fit for dignitaries and high-profile delegations.'],
+      ['402', 'Royal Penthouse Suite', 850, 'free', 4, 4, 'Penthouse Terrace, Private Bar, Heated Whirlpool, 360 Degree Views', 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=800&q=80', 'Exclusive top-floor royal penthouse with private elevator access and terrace.'],
     ];
 
     for (const r of initialRooms) {
@@ -307,10 +307,10 @@ function initDatabase() {
   const hallCount = db.get('SELECT COUNT(*) as count FROM meeting_halls').count;
   if (hallCount === 0) {
     const initialHalls = [
-      ['Kembridge Grand Ballroom', 'Banquet & Gala', 450, 18000, 'free', '4K Laser Projector, Surround Sound, Stage & Podium, Ambient Stage Lighting, Banquet Catering', 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80', 'Massive banquet hall ideal for weddings, international summits, and cultural galas.'],
-      ['Abba Jifar Conference Hall', 'Conference', 180, 9500, 'free', 'Dual HD Displays, Translation Booths, Video Conferencing, High-Speed Dedicated Mesh Wi-Fi', 'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=800&q=80', 'State-of-the-art conference venue with flexible theatre or classroom seating.'],
-      ['Teppi Executive Boardroom', 'Executive Boardroom', 30, 4200, 'free', 'Leather Ergonomic Chairs, Interactive Smart Board, Video Teleconference, Coffee Bar', 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80', 'Sophisticated boardroom for high-stakes corporate meetings and delegations.'],
-      ['Kaffa Multipurpose Hall', 'Medium Seminar', 80, 6000, 'free', 'Wireless Microphones, Podium, Configurable Workshop Tables, Acoustic Paneling', 'https://images.unsplash.com/photo-1431540015161-0bf868a2d407?auto=format&fit=crop&w=800&q=80', 'Versatile multi-purpose hall for seminars, trainings, and workshops.']
+      ['Grand Crystal Ballroom', 'Banquet & Gala', 500, 2500, 'free', '4K Laser Projector, Surround Audio System, Stage & Podium, Intelligent Ambient Lighting, Banquet Catering', 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80', 'Spectacular ballroom ideal for grand galas, award ceremonies, and international conferences.'],
+      ['Metropolitan Conference Hall', 'Conference', 200, 1400, 'free', 'Dual HD Displays, Translation Booths, Video Teleconference, Dedicated High-Speed Fiber', 'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=800&q=80', 'State-of-the-art conference venue with flexible theatre or classroom seating layouts.'],
+      ['Executive Boardroom & Suites', 'Executive Boardroom', 30, 600, 'free', 'Leather Ergonomic Chairs, Interactive Smart Board, Video Teleconference, Coffee Bar', 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80', 'Sophisticated boardroom for high-stakes corporate meetings, executive retreats, and partner sessions.'],
+      ['Summit Multipurpose Hall', 'Medium Seminar', 90, 850, 'free', 'Wireless Microphones, Podium, Configurable Workshop Tables, Acoustic Paneling', 'https://images.unsplash.com/photo-1431540015161-0bf868a2d407?auto=format&fit=crop&w=800&q=80', 'Versatile multi-purpose hall for seminars, trainings, and collaborative workshops.']
     ];
 
     for (const h of initialHalls) {
@@ -326,14 +326,14 @@ function initDatabase() {
   const foodCount = db.get('SELECT COUNT(*) as count FROM foods').count;
   if (foodCount === 0) {
     const initialFoods = [
-      ['Special Teppi Tibs', 'traditional', 450, 60, 'available', 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80', 'Sizzling prime beef cubes sauteed with rosemary, red onions, garlic, and jalapeños.'],
-      ['Special Doro Wat (Chicken Stew)', 'traditional', 550, 40, 'available', 'https://images.unsplash.com/photo-1541832676-9b763b0239ab?auto=format&fit=crop&w=600&q=80', 'Rich slow-cooked chicken stew simmered in authentic Ethiopian berbere with boiled egg and injera.'],
-      ['Shiro Tegabino with Kibe', 'traditional', 280, 80, 'available', 'https://images.unsplash.com/photo-1505253758473-96b3d5eb926f?auto=format&fit=crop&w=600&q=80', 'Bubbling clay-pot spiced chickpea puree enriched with purified spiced Ethiopian butter.'],
-      ['Fasting Mahberawi (Beyaynetu)', 'traditional', 380, 50, 'available', 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80', 'Vibrant rainbow platter of lentils, collard greens, yellow split peas, beets, and salads.'],
-      ['Grilled Rift Valley Salmon', 'main', 750, 30, 'available', 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=600&q=80', 'Freshly pan-seared fillet served with garlic herb mashed potatoes and seasonal vegetables.'],
-      ['Ehitmamachochi Gourmet Burger', 'fast_food', 390, 70, 'available', 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80', 'Juicy double beef patty, aged cheddar, caramelized onions, crispy fries, and secret sauce.'],
-      ['Crispy Chicken Club Sandwich', 'fast_food', 340, 65, 'available', 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=600&q=80', 'Triple-layer toasted sandwich with herb grilled chicken, lettuce, tomato, and fries.'],
-      ['Tiramisu & Wild Honey Tart', 'dessert', 250, 45, 'available', 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=600&q=80', 'Decadent Italian classic infused with Ethiopian Sidamo espresso and organic honey.']
+      ['Prime Grilled Ribeye Steak', 'main', 42, 60, 'available', 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80', 'Dry-aged prime steak served with herb roasted potatoes, asparagus, and red wine reduction.'],
+      ['Pan-Seared Atlantic Salmon', 'main', 38, 50, 'available', 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=600&q=80', 'Crispy skin fillet served with garlic saffron risotto, lemon butter glaze, and broccolini.'],
+      ['Artisan Truffle Beef Burger', 'fast_food', 24, 70, 'available', 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80', 'Wagyu beef patty, black truffle aioli, aged gruyère, caramelized onions, and brioche bun.'],
+      ['Crispy Chicken Club Sandwich', 'fast_food', 20, 65, 'available', 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=600&q=80', 'Triple-layer toasted sandwich with herb grilled chicken breast, smoked bacon, and seasoned fries.'],
+      ['Fettuccine Alfredo with Wild Mushrooms', 'main', 26, 55, 'available', 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80', 'Handmade ribbon pasta tossed in rich parmesan cream with sautéed porcini and shaved truffle.'],
+      ['Stone-Baked Margherita Pizza', 'fast_food', 22, 60, 'available', 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80', 'San Marzano tomato base, fresh buffalo mozzarella, aromatic basil, and extra virgin olive oil.'],
+      ['Classic Caesar Salad with Herb Croutons', 'appetizer', 18, 50, 'available', 'https://images.unsplash.com/photo-1550304943-4f24f54ddde9?auto=format&fit=crop&w=600&q=80', 'Crisp romaine lettuce, aged parmigiano-reggiano, garlic herb croutons, and house Caesar dressing.'],
+      ['Authentic Espresso Tiramisu', 'dessert', 14, 45, 'available', 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=600&q=80', 'Classic Italian savoiardi soaked in artisan espresso with layered mascarpone and Belgian cocoa.']
     ];
 
     for (const f of initialFoods) {
@@ -349,18 +349,16 @@ function initDatabase() {
   const bevCount = db.get('SELECT COUNT(*) as count FROM beverages').count;
   if (bevCount === 0) {
     const initialBevs = [
-      ['St. George Draught Beer', 'beer', 45, 90, 240, 'bottle', 'available'],
-      ['Habesha Cold Gold Beer', 'beer', 50, 100, 200, 'bottle', 'available'],
-      ['Walia Beer', 'beer', 45, 90, 180, 'bottle', 'available'],
-      ['Rift Valley Merlot Red Wine', 'wine', 350, 650, 60, 'bottle', 'available'],
-      ['Acacia Sweet White Wine', 'wine', 320, 600, 50, 'bottle', 'available'],
-      ['Traditional Tej Honey Wine', 'wine', 90, 180, 100, 'carafe', 'available'],
-      ['Johnnie Walker Black Label', 'spirit', 2200, 4200, 25, 'bottle', 'available'],
-      ['Absolut Vodka Shot', 'spirit', 60, 140, 80, 'shot', 'available'],
-      ['Ethiopian Sidamo Organic Espresso', 'hot_beverage', 25, 60, 400, 'cup', 'available'],
-      ['Fresh Pressed Mango & Avocado Juice', 'soft_drink', 35, 90, 120, 'glass', 'available'],
-      ['Sparkling Ambo Mineral Water', 'soft_drink', 20, 45, 300, 'bottle', 'available'],
-      ['Coca-Cola / Sprite', 'soft_drink', 20, 50, 350, 'bottle', 'available']
+      ['Craft IPA Draught Beer', 'beer', 4, 9, 240, 'bottle', 'available'],
+      ['Premium Pilsner Lager', 'beer', 3.5, 8, 200, 'bottle', 'available'],
+      ['Cabernet Sauvignon Reserve', 'wine', 25, 65, 60, 'bottle', 'available'],
+      ['Chardonnay Blanc Reserve', 'wine', 22, 58, 50, 'bottle', 'available'],
+      ['Old Fashioned Cocktail', 'cocktail', 6, 16, 120, 'glass', 'available'],
+      ['Single Malt Scotch Whisky', 'spirit', 45, 120, 30, 'bottle', 'available'],
+      ['Artisan Roasted Espresso Coffee', 'hot_beverage', 1.5, 5, 400, 'cup', 'available'],
+      ['Fresh Pressed Orange & Mango Juice', 'soft_drink', 2, 6, 120, 'glass', 'available'],
+      ['Sparkling Mineral Water', 'soft_drink', 1.5, 4, 300, 'bottle', 'available'],
+      ['Classic Iced Tea with Lemon', 'soft_drink', 1.5, 4.5, 350, 'glass', 'available']
     ];
 
     for (const b of initialBevs) {
@@ -376,14 +374,14 @@ function initDatabase() {
   const invCount = db.get('SELECT COUNT(*) as count FROM inventory').count;
   if (invCount === 0) {
     const initialInventory = [
-      ['Premium Cotton Bed Sheets', 'linens', 150, 'sets', 420, 20, 'in_stock'],
-      ['Luxury Egyptian Towel Sets', 'linens', 200, 'sets', 250, 30, 'in_stock'],
-      ['Organic Sidamo Coffee Beans', 'beverage', 45, 'kg', 380, 10, 'in_stock'],
-      ['Pure Sunflower Cooking Oil', 'food_ingredient', 30, 'liters', 290, 10, 'in_stock'],
-      ['Wheat Flour Premium Grade', 'food_ingredient', 50, 'kg', 120, 15, 'in_stock'],
-      ['Eco Luxury Guest Shampoos', 'amenities', 350, 'bottles', 35, 50, 'in_stock'],
-      ['Hotel Keycards RFID', 'office', 400, 'pcs', 25, 80, 'in_stock'],
-      ['St. George Beer Crates', 'beverage', 28, 'crates', 1080, 10, 'in_stock']
+      ['Premium Cotton Bed Sheet Sets', 'linens', 150, 'sets', 45, 20, 'in_stock'],
+      ['Luxury Egyptian Towel Sets', 'linens', 200, 'sets', 25, 30, 'in_stock'],
+      ['Artisan Roasted Coffee Beans', 'beverage', 50, 'kg', 22, 10, 'in_stock'],
+      ['Pure Olive Cooking Oil', 'food_ingredient', 40, 'liters', 18, 10, 'in_stock'],
+      ['Organic Pastry Flour', 'food_ingredient', 60, 'kg', 8, 15, 'in_stock'],
+      ['Guest Botanical Toiletries Kit', 'amenities', 350, 'kits', 5, 50, 'in_stock'],
+      ['RFID Electronic Hotel Keycards', 'office', 400, 'pcs', 2, 80, 'in_stock'],
+      ['Premium Craft Beer Cases', 'beverage', 30, 'cases', 85, 10, 'in_stock']
     ];
 
     for (const inv of initialInventory) {
@@ -403,12 +401,12 @@ function initDatabase() {
     db.run(
       `INSERT INTO room_reservations (booking_code, customer_name, customer_email, customer_phone, kebele_id, room_id, room_type, room_price, checkin_date, checkout_date, guests_count, status, payment_status, assigned_by)
        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-      ['RES-1029', 'Solomon Girma', 'solomon.girma@gmail.com', '+251 911 889900', 'KB-88219', 2, 'Single Deluxe', 1200, today, tomorrow, 1, 'checked_in', 'paid', 'Bethlehem Tadesse']
+      ['RES-1029', 'James Wilson', 'james.wilson@example.com', '+1 (555) 782-9900', 'ID-88219', 2, 'Single Deluxe', 150, today, tomorrow, 1, 'checked_in', 'paid', 'Sophia Bennett']
     );
     db.run(
       `INSERT INTO room_reservations (booking_code, customer_name, customer_email, customer_phone, kebele_id, room_id, room_type, room_price, checkin_date, checkout_date, guests_count, status, payment_status, assigned_by)
        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-      ['RES-1030', 'Dr. Almaz Ayana', 'almaz.ayana@un.org', '+251 922 445566', 'KB-99124', 4, 'Double Executive', 1900, today, tomorrow, 2, 'confirmed', 'deposit', 'Bethlehem Tadesse']
+      ['RES-1030', 'Dr. Emily Carter', 'emily.carter@hospital.org', '+1 (555) 892-4455', 'ID-99124', 4, 'Double Executive', 240, today, tomorrow, 2, 'confirmed', 'deposit', 'Sophia Bennett']
     );
   }
 
@@ -419,24 +417,24 @@ function initDatabase() {
     const ord = db.run(
       `INSERT INTO orders (order_code, customer_name, table_number, room_id, host_id, host_name, total_amount, status, payment_method, payment_status, reported_date)
        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-      ['ORD-501', 'Table 4 (VIP Terrace)', 'T-04', 'None', 4, 'Hiwot Haile', 1230, 'served', 'cash', 'paid', today]
+      ['ORD-501', 'Table 4 (VIP Terrace)', 'T-04', 'None', 4, 'Emma Davis', 104, 'served', 'cash', 'paid', today]
     );
 
     const orderId = ord.lastInsertRowid;
     db.run(
       `INSERT INTO order_items (order_id, item_name, item_type, quantity, unit_price, total_price)
        VALUES (?, ?, ?, ?, ?, ?)`,
-      [orderId, 'Special Teppi Tibs', 'food', 2, 450, 900]
+      [orderId, 'Prime Grilled Ribeye Steak', 'food', 2, 42, 84]
     );
     db.run(
       `INSERT INTO order_items (order_id, item_name, item_type, quantity, unit_price, total_price)
        VALUES (?, ?, ?, ?, ?, ?)`,
-      [orderId, 'Habesha Cold Gold Beer', 'beverage', 3, 100, 300]
+      [orderId, 'Premium Pilsner Lager', 'beverage', 2, 8, 16]
     );
     db.run(
       `INSERT INTO order_items (order_id, item_name, item_type, quantity, unit_price, total_price)
        VALUES (?, ?, ?, ?, ?, ?)`,
-      [orderId, 'Sparkling Ambo Mineral Water', 'beverage', 1, 30, 30]
+      [orderId, 'Sparkling Mineral Water', 'beverage', 1, 4, 4]
     );
   }
 
@@ -447,17 +445,17 @@ function initDatabase() {
     db.run(
       `INSERT INTO financial_transactions (type, category, amount, reference_id, provider_name, description, transaction_date)
        VALUES (?, ?, ?, ?, ?, ?, ?)`,
-      ['income', 'room_booking', 3800, 'RES-1029', 'Bethlehem Tadesse', 'Room 102 stay settlement', today]
+      ['income', 'room_booking', 450, 'RES-1029', 'Sophia Bennett', 'Room 102 accommodation settlement', today]
     );
     db.run(
       `INSERT INTO financial_transactions (type, category, amount, reference_id, provider_name, description, transaction_date)
        VALUES (?, ?, ?, ?, ?, ?, ?)`,
-      ['income', 'restaurant_bar', 1230, 'ORD-501', 'Hiwot Haile', 'Table 4 Dining bill settled', today]
+      ['income', 'restaurant_bar', 104, 'ORD-501', 'Emma Davis', 'Table 4 dining bill settled', today]
     );
     db.run(
       `INSERT INTO financial_transactions (type, category, amount, reference_id, provider_name, description, transaction_date)
        VALUES (?, ?, ?, ?, ?, ?, ?)`,
-      ['expense', 'inventory_purchase', 2400, 'PO-201', 'Tigist Worku', 'Procured fresh organic vegetables & dairy', today]
+      ['expense', 'inventory_purchase', 320, 'PO-201', 'Jennifer Cole', 'Procured organic kitchen produce and linens', today]
     );
   }
 
@@ -481,12 +479,12 @@ function initDatabase() {
     db.run(
       `INSERT INTO staff_tasks (title, assigned_to_name, role, priority, room_or_area, status, notes, due_date)
        VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
-      ['Deep Sanitization & Restock', 'Abebe Desta', 'Staff', 'high', 'Room 101', 'in_progress', 'Prepare for VIP arrival this afternoon', 'Today, 2:00 PM']
+      ['Deep Sanitization & Turndown', 'Michael Turner', 'Staff', 'high', 'Room 101', 'in_progress', 'Prepare for VIP arrival this afternoon', 'Today, 2:00 PM']
     );
     db.run(
       `INSERT INTO staff_tasks (title, assigned_to_name, role, priority, room_or_area, status, notes, due_date)
        VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
-      ['AC Filter Inspection', 'Abebe Desta', 'Staff', 'medium', 'Kembridge Ballroom', 'pending', 'Routine quarterly HVAC maintenance', 'Tomorrow, 10:00 AM']
+      ['Acoustic Setup & HVAC Inspection', 'Michael Turner', 'Staff', 'medium', 'Grand Crystal Ballroom', 'pending', 'Routine quarterly conference hall inspection', 'Tomorrow, 10:00 AM']
     );
   }
 
@@ -496,12 +494,12 @@ function initDatabase() {
     db.run(
       `INSERT INTO feedback_comments (guest_name, guest_email, rating, comment, status)
        VALUES (?, ?, ?, ?, ?)`,
-      ['Aman Abera', 'aman@abera.et', 5, 'Exceptional stay! The Teppi Tibs and the panoramic penthouse suite view exceeded all our expectations.', 'published']
+      ['Marcus Aurelius', 'marcus@globaltravel.com', 5, 'Exceptional experience! The penthouse skyline view and dining services exceeded all our expectations.', 'published']
     );
     db.run(
       `INSERT INTO feedback_comments (guest_name, guest_email, rating, comment, status)
        VALUES (?, ?, ?, ?, ?)`,
-      ['Elena Rossi', 'elena.rossi@travel.it', 5, 'World-class hospitality, immaculate rooms, and great conference facilities. Will visit again!', 'published']
+      ['Elena Rossi', 'elena.rossi@travel.it', 5, 'World-class hospitality, immaculate suites, and great conference facilities. Will visit again!', 'published']
     );
   }
 

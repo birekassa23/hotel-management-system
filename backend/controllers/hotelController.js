@@ -4,10 +4,13 @@ exports.getHotelInfo = (req, res) => {
   try {
     const info = db.get('SELECT * FROM hotel_info LIMIT 1');
     res.json(info || {
-      name: 'Ehitmamachochi Grand Luxury Hotel',
-      town: 'Teppi',
-      region: 'South West',
-      country: 'Ethiopia'
+      name: 'Grand Horizon Luxury Hotel & Suites',
+      address: '742 Evergreen Boulevard, Central District',
+      town: 'Metropolis',
+      region: 'Capital Region',
+      country: 'Global',
+      phone: '+1 (555) 019-2834',
+      email: 'contact@grandhorizonhotel.com'
     });
   } catch (error) {
     res.status(500).json({ message: 'Error retrieving hotel info', error: error.message });

@@ -108,11 +108,11 @@ export default function Sidebar({ activeTab, onSelectTab, onGoHome }) {
           justifyContent: 'center',
           boxShadow: 'var(--gold-glow)'
         }}>
-          <span style={{ fontWeight: '800', color: '#090d16', fontSize: '1.1rem' }}>E</span>
+          <span style={{ fontWeight: '800', color: '#090d16', fontSize: '1.1rem' }}>H</span>
         </div>
         <div>
           <div style={{ fontWeight: '700', fontSize: '0.95rem', color: 'var(--text-main)' }}>
-            Ehitmamachochi
+            Grand Horizon
           </div>
           <div style={{ fontSize: '0.725rem', color: 'var(--gold-primary)', fontWeight: '600', textTransform: 'uppercase' }}>
             {role} Workspace

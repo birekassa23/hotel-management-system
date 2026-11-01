@@ -1,7 +1,7 @@
 {
   "name": "hotel-management-backend",
   "version": "1.0.0",
-  "description": "Express Backend for Ehitmamachochi Hotel Management System",
+  "description": "Express Backend for General Hotel Management System",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

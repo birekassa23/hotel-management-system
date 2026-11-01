@@ -190,7 +190,7 @@ export default function LandingPage({ onNavigate }) {
             marginBottom: '24px'
           }}>
             <Sparkles size={16} color="var(--gold-primary)" />
-            <span>South West Ethiopia's Premier 5-Star Destination</span>
+            <span>Premier 5-Star Luxury Destination</span>
           </div>
 
           <h1 style={{
@@ -201,7 +201,7 @@ export default function LandingPage({ onNavigate }) {
             color: '#ffffff',
             textShadow: '0 4px 20px rgba(0,0,0,0.8)'
           }}>
-            Experience Timeless Elegance & Warm Ethiopian Hospitality
+            Experience Timeless Elegance & World-Class Hospitality
           </h1>
 
           <p style={{
@@ -211,7 +211,7 @@ export default function LandingPage({ onNavigate }) {
             margin: '0 auto 36px',
             fontWeight: '400'
           }}>
-            Located in picturesque Teppi, Ehitmamachochi Hotel pairs world-class accommodation, state-of-the-art conference facilities, and authentic Ethiopian gastronomy.
+            Welcome to Grand Horizon Hotel & Suites — pairing luxury accommodation, state-of-the-art conference facilities, and gourmet international gastronomy.
           </p>
 
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
@@ -511,27 +511,27 @@ export default function LandingPage({ onNavigate }) {
       }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '32px', marginBottom: '40px' }}>
           <div>
-            <h4 style={{ color: 'var(--gold-primary)', fontSize: '1.1rem', marginBottom: '14px' }}>EHITMAMACHOCHI</h4>
+            <h4 style={{ color: 'var(--gold-primary)', fontSize: '1.1rem', marginBottom: '14px' }}>GRAND HORIZON</h4>
             <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', lineHeight: 1.6 }}>
-              The highest standard of hospitality, executive meetings, and luxury stays in Teppi, Ethiopia.
+              The highest standard of luxury accommodation, executive meetings, and bespoke guest services.
             </p>
           </div>
           <div>
             <h5 style={{ fontSize: '0.95rem', marginBottom: '14px' }}>Location</h5>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-muted)', fontSize: '0.85rem', marginBottom: '8px' }}>
               <MapPin size={16} color="var(--gold-primary)" />
-              Ayermeda above post Kembridge Academy, Teppi, Ethiopia
+              742 Evergreen Boulevard, Central District
             </div>
           </div>
           <div>
             <h5 style={{ fontSize: '0.95rem', marginBottom: '14px' }}>Direct Inquiries</h5>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-muted)', fontSize: '0.85rem', marginBottom: '8px' }}>
               <Phone size={16} color="var(--gold-primary)" />
-              +251 904 9314
+              +1 (555) 019-2834
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-muted)', fontSize: '0.85rem' }}>
               <Mail size={16} color="var(--gold-primary)" />
-              contact@ehitmamachochihotel.com
+              contact@grandhorizonhotel.com
             </div>
           </div>
           <div>
@@ -542,7 +542,7 @@ export default function LandingPage({ onNavigate }) {
           </div>
         </div>
         <div style={{ textAlign: 'center', borderTop: '1px solid var(--border-light)', paddingTop: '20px', color: 'var(--text-dim)', fontSize: '0.775rem' }}>
-          © 2026 Ehitmamachochi Hotel Management System. Built with React & Node.js/Express.
+          © 2026 Grand Horizon Hotel Management System. Built with React & Node.js/Express.
         </div>
       </footer>
 

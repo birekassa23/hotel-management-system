@@ -43,10 +43,10 @@ export default function Navbar({ onNavigate, onOpenBookingModal, onOpenLookupMod
           </div>
           <div>
             <div style={{ fontSize: '1.15rem', fontWeight: '800', letterSpacing: '-0.01em', color: 'var(--text-main)', lineHeight: 1.1 }}>
-              EHITMAMACHOCHI
+              GRAND HORIZON
             </div>
             <div style={{ fontSize: '0.7rem', fontWeight: '600', color: 'var(--gold-primary)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-              Grand Luxury Hotel & Suites
+              Luxury Hotel & Suites
             </div>
           </div>
         </div>

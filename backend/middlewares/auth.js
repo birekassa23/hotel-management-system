@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const db = require('../config/db');
 
-const JWT_SECRET = process.env.JWT_SECRET || 'ehitmamachochi_secret_key_2026';
+const JWT_SECRET = process.env.JWT_SECRET || 'hotel_management_system_secret_key_2026';
 
 function verifyToken(req, res, next) {
   const authHeader = req.headers['authorization'];

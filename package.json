@@ -1,5 +1,5 @@
 {
-  "name": "ehitmamachochi-hotel-management-system",
+  "name": "hotel-management-system",
   "version": "2.0.0",
   "description": "Full-stack Hotel Management System built with React and Node.js / Express",
   "scripts": {

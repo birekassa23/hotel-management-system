@@ -39,7 +39,7 @@ app.use('/api/hotel', hotelRoutes);
 app.get('/api/health', (req, res) => {
   res.json({
     status: 'ok',
-    service: 'Ehitmamachochi Hotel Management System API',
+    service: 'Enterprise Hotel Management System API',
     version: '2.0.0',
     timestamp: new Date().toISOString()
   });
